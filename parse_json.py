@@ -2,6 +2,7 @@ import os
 import json
 from Logger import init_logger as lg
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import duckdb
 import polars as pl
 import re
@@ -64,7 +65,7 @@ def process_dataframe(
         f"{os.getcwd()}/maps/river_basinc.json", "r"
     ) as rbj:  # River basins are not properly filled out. Mapping and filling them
         river_basin_map = json.load(rbj)
-    epoch_h = datetime.fromtimestamp(int(epoch)).strftime(
+    epoch_h = datetime.fromtimestamp(int(epoch), tz=ZoneInfo("Asia/Colombo")).strftime(
         "%Y%m%d%H%M%S"
     )  # Adding a human readable timestamp for the report epoch
     df = pl.DataFrame(content_rows, schema=header_cols)
