@@ -14,7 +14,7 @@ def get_latest_pdf(pdf_ls: list) -> str:
 
 def pdf_to_json(file: str, epoch: str) -> None:
     status_mg = None
-    table_ls = camelot.read_pdf(file, pages='all')
+    table_ls = camelot.read_pdf(file, pages="all")
     tables_length = [i.df.shape[0] for i in table_ls]
     tables_width = [i.df.shape[1] for i in table_ls]
     if len(table_ls) == 1:
@@ -23,8 +23,12 @@ def pdf_to_json(file: str, epoch: str) -> None:
             f'PDF table read and written to a JSON as "water_level_{epoch}.json"'
         )
     else:
-        table_selected_ls = [i for i in table_ls if i.df.shape == (max(tables_length), max(tables_width))]
-        table_selected_ls[0].to_json(f"{os.getcwd()}/Data/JSON/water_level_{epoch}.json")
+        table_selected_ls = [
+            i for i in table_ls if i.df.shape == (max(tables_length), max(tables_width))
+        ]
+        table_selected_ls[0].to_json(
+            f"{os.getcwd()}/Data/JSON/water_level_{epoch}.json"
+        )
         status_mg = "More than 1 table identified. Selected only the one with longest length and widest body"
 
     lg.logging.info(status_mg)

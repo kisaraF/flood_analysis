@@ -6,12 +6,14 @@ from typing import Annotated
 
 app = FastAPI()
 
+
 def duckdb_conn() -> duckdb.DuckDBPyConnection:
     conn = duckdb.connect("flood_db.duckdb")
     try:
         yield conn
     finally:
         conn.close()
+
 
 @app.get("/water-level")
 async def get_all_incidents(
@@ -54,4 +56,3 @@ async def get_all_incidents(
         params.extend([s.lower() for s in station])
 
     return conn.execute(query, params).fetchall()
-
