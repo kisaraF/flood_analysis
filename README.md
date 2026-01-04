@@ -4,7 +4,7 @@ This project aims to collect data from Sri Lanka's Disaster Management Center's 
 
 ## Data Source
 
-* URL - [DMC]("https://www.dmc.gov.lk/index.php?option=com_dmcreports&view=reports&Itemid=277&report_type_id=6&lang=en&limitstart=0")
+* URL - [DMC](https://www.dmc.gov.lk/index.php?option=com_dmcreports&view=reports&Itemid=277&report_type_id=6&lang=en&limitstart=0)
 * Format - PDF
 
 ## Extracting Data
@@ -39,7 +39,7 @@ Through these derived attributes, we can make all the incident report data,
 
 ## Querying the Data
 
-If you are familiar with SQL, all you have to do is, use a database manager like ___[DBeaver]("https://dbeaver.io/download/")___
+If you are familiar with SQL, all you have to do is, use a database manager like ___[DBeaver](https://dbeaver.io/download/)___
 
 ### Sample Queries
 
